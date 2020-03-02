@@ -1,0 +1,24 @@
+.text{
+    padding: 10px;
+}
+.text1{
+    font-size: 25px;
+}
+.input{
+    width: 10px;
+    border: 1px solid gray;
+    padding: 5px;
+  margin-top: 25px;
+}
+.table1 {
+    margin-top: 40px;
+    // padding: 10px;
+    width: 100%;
+    overflow-x: scroll !important;
+    word-wrap: break-word;
+    font-size:0.8em;
+    font-weight:300;
+    ion-grid {
+        min-width: 450px;
+    }
+  }

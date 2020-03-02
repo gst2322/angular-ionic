@@ -1,0 +1,66 @@
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin: 15px;
+  animation: 1.5s fadeIn;
+  animation-fill-mode: forwards;
+
+  visibility: hidden;
+  // transition: transform 0.3s ease-out; // note that we're transitioning transform, not height!
+  height: auto;
+  // transform: scaleY(1); // implicit, but good to specify explicitly
+  // transform-origin: top; // keep the top of the element in the same place. this is optional.
+}
+.collapsed {
+  transform: scaleY(1); // *squish*
+}
+
+.input_styl {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  background-color: #fff;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.worn_stl {
+  padding-top: 5px;
+  color: #e0b500;
+}
+
+.list-ios {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: -1px;
+  margin-bottom: 0;
+  background: var(--ion-item-background, var(--ion-background-color, #fff));
+}
+
+p,
+span,
+div,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  white-space: initial;
+  overflow: initial;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}

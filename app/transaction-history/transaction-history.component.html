@@ -1,0 +1,87 @@
+<ion-card>
+  <ion-card-content style="border-bottom: 1px solid gray;"><b>Transactions History</b></ion-card-content>
+  <div class="table">
+    <ion-grid>
+      <ion-row style="border-bottom: 1px solid gray; ">
+        <ion-col size-lg="2" size-sm="4" size-md="4">
+          <ion-text class="text"> Pasttransactions</ion-text>
+        </ion-col>
+        <ion-col size-lg="2" size-sm="4" size-md="4">
+          <ion-text class="text">presenttransactions</ion-text>
+        </ion-col>
+        <ion-col size-lg="2" size-sm="4" size-md="4">
+          <ion-text class="text"> Futuretransactions</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-text class="text1"><b>Paid out: $0</b></ion-text>
+    <ion-grid>
+      <ion-row style="border-bottom: 1px solid gray;">
+        <ion-col size-lg="3" size="12" size-md="12">
+          <ion-item style="border: 1px solid gray;   height: 40px;">
+            <ion-select interface="popover" style="min-width: 325px;padding: 0;" placeholder="search">
+              <ion-select-option value="dos">{{property4.select4}}</ion-select-option>
+              <ion-select-option value="lunix">{{property4.select5}}</ion-select-option>
+              <ion-select-option value="mac7">{{property4.select6}}</ion-select-option>
+              <ion-select-option value="mac8">{{property4.select7}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size-lg="3" size="12" size-md="12">
+          <ion-item style="border: 1px solid gray;   height: 40px;">
+            <ion-select interface="popover" style="min-width: 325px;padding: 0;" placeholder="search">
+              <ion-select-option value="dos">{{property3.select4}}</ion-select-option>
+              <ion-select-option value="lunix">{{property3.select5}}</ion-select-option>
+              <ion-select-option value="mac7"> {{property3.select6}}</ion-select-option>
+              <ion-select-option value="mac8">{{property3.select7}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size-lg="3" size="12" size-md="12">
+          <ion-item style="border: 1px solid gray;  height: 40px;">
+            <ion-select interface="popover" style="min-width: 325px;padding: 0;" placeholder="search">
+              <ion-select-option value="dos">{{property2.select4}}</ion-select-option>
+              <ion-select-option value="lunix">{{property2.select5}}</ion-select-option>
+              <ion-select-option value="mac7">{{property2.select6}}</ion-select-option>
+              <ion-select-option value="mac8">{{property2.select7}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size-lg="3" size="12">
+          <ion-item style="border: 1px solid gray;   height: 40px;">
+            <ion-select interface="popover" style="min-width: 325px;padding: 0;" placeholder="search">
+              <ion-select-option value="dos">{{payment.select}}</ion-select-option>
+              <ion-select-option value="lunix">{{payment.select1}}</ion-select-option>
+              <ion-select-option value="mac7">{{payment.select2}}</ion-select-option>
+              <ion-select-option value="mac8">{{payment.select3}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="table1">
+    <ion-grid>
+      <ion-row class="row9">
+        <ion-col size="2">
+          <ion-text><b>Date</b></ion-text>
+        </ion-col>
+        <ion-col size="2">
+          <ion-text><b>Property</b></ion-text>
+        </ion-col>
+        <ion-col size="2">
+          <ion-text><b>Type</b></ion-text>
+        </ion-col>
+        <ion-col size="2">
+          <ion-text><b>Details</b></ion-text>
+        </ion-col>
+        <ion-col size="2">
+          <ion-text><b>Amount</b></ion-text>
+        </ion-col>
+        <ion-col size="2">
+          <ion-text><b>Paid Out</b></ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-card>

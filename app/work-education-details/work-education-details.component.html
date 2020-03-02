@@ -1,0 +1,313 @@
+<ion-content>
+  <div>
+    <ion-list class="ios list-ios hydrated">
+      <ion-item class="item ios in-list ion-focusable item-label hydrated">
+        <!-- (click)="" -->
+        <ion-avatar
+          slot="start"
+          class="ios hydrated"
+          (click)="openWorkForm = !openWorkForm"
+          [ngClass]="{ collapsed: openWorkForm }"
+        >
+          <ion-icon
+            name="add"
+            *ngIf="!openWorkForm"
+            style="font-size: 45px; border: 2px dashed green;cursor: pointer;"
+          ></ion-icon>
+          <ion-icon
+            name="remove"
+            *ngIf="openWorkForm"
+            style="font-size: 45px; border: 2px dashed green;cursor: pointer;"
+          ></ion-icon>
+        </ion-avatar>
+        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated" style="padding-left: 10px;">
+          <h1>ADD WORK DETAILS</h1>
+        </ion-label>
+      </ion-item>
+
+      <div class="container" [hidden]="!openWorkForm">
+        <form [formGroup]="workDetailsForm" (ngSubmit)="isEdit ? updateWorkData() : submitworkDataForm()" novalidate>
+          <ion-row>
+            <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4" align-self-center>
+              <label>Company</label>
+            </ion-col>
+            <ion-col size-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8" align-self-center>
+              <ion-input
+                type="text"
+                formControlName="companyName"
+                placeholder="Enter your company name"
+                class="input_styl"
+              >
+              </ion-input>
+              <div class="worn_stl">
+                <span class="error ion-padding" *ngIf="isSubmitted && errorControl.companyName.errors?.required">
+                  Name is required.
+                </span>
+                <span class="error ion-padding" *ngIf="isSubmitted && errorControl.companyName.errors?.minlength">
+                  Name should be min 2 chars long.
+                </span>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4" align-self-center>
+              <label>Position</label>
+            </ion-col>
+            <ion-col csize-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8" align-self-center>
+              <ion-input type="text" formControlName="position" placeholder="Your designation.." class="input_styl">
+              </ion-input>
+              <div class="worn_stl">
+                <span class="error ion-padding" *ngIf="isSubmitted && errorControl.position.errors?.required">
+                  Position is required.
+                </span>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4" align-self-center>
+              <label>Location</label>
+            </ion-col>
+            <ion-col csize-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8" align-self-center>
+              <input type="text" #address formControlName="location" class="input_styl" placeholder="Your location.." />
+              <div class="worn_stl">
+                <span class="error ion-padding" *ngIf="isSubmitted && errorControl.location.errors?.required">
+                  location is required.
+                </span>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4" align-self-center>
+              <label>When you start</label>
+            </ion-col>
+            <ion-col csize-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8" align-self-center>
+              <ion-datetime
+                (ionChange)="getDate($event.target.value, 'work')"
+                formControlName="startDate"
+                aria-placeholder="slect date"
+                class="input_styl"
+              ></ion-datetime>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4" align-self-center>
+              <label>When you leave</label>
+            </ion-col>
+            <ion-col csize-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8" align-self-center>
+              <ion-datetime
+                (ionChange)="getEndDate($event.target.value, 'work')"
+                formControlName="endDate"
+                aria-placeholder="slect date"
+                class="input_styl"
+              ></ion-datetime>
+            </ion-col>
+          </ion-row>
+          <ion-row style="text-align: end;">
+            <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+              <ion-button type="button" color="light" slots="end" (click)="closeFrom('work')"> cancel </ion-button>
+              <ion-button type="submit" color="primary" slots="end">
+                <span *ngIf="isEdit"> Save</span>
+                <span *ngIf="!isEdit">Submit</span>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </div>
+    </ion-list>
+    <!--  -->
+
+    <ion-list class="ios list-ios hydrated" *ngIf="workDataList.length > 0">
+      <ion-list-header class="ios hydrated">
+        Work details
+      </ion-list-header>
+      <ion-item-sliding>
+        <ion-item
+          class="item ios in-list ion-focusable item-label hydrated"
+          *ngFor="let item of workDataList; let i = index"
+        >
+          <ion-avatar slot="start" class="ios hydrated">
+            <i class="fa fa-briefcase" aria-hidden="true" style="font-size: 50px;"></i>
+          </ion-avatar>
+          <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated" style="padding-left: 10px;">
+            <h2>{{ item.companyName }}</h2>
+            <p>{{ item.position }}, {{ item.location }}, {{ item.startDate }}- {{ item.endDate }}</p>
+            <p style="text-align: end;">
+              <ion-button color="primary" (click)="editWorkData(item)">
+                <ion-icon ios="ios-color-filter" md="md-color-filter"></ion-icon>
+              </ion-button>
+              <ion-button color="danger" (click)="deleteWorkData(i)">
+                <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+              </ion-button>
+              <ion-button color="light" (click)="helpWorkData()">
+                <ion-icon ios="ios-help" md="md-help"></ion-icon>
+              </ion-button>
+            </p>
+          </ion-label>
+          <ion-note slot="end" color="primary" class="ion-color ion-color-primary ios hydrated"> </ion-note>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+  <div>
+    <ion-list class="ios list-ios hydrated">
+      <ion-item class="item ios in-list ion-focusable item-label hydrated">
+        <ion-avatar
+          slot="start"
+          class="ios hydrated"
+          (click)="openEducationForm = !openEducationForm"
+          [ngClass]="{ collapsed: openEducationForm }"
+        >
+          <ion-icon
+            name="add"
+            *ngIf="!openEducationForm"
+            style="font-size: 45px; border: 2px dashed green;cursor: pointer;"
+          ></ion-icon>
+          <ion-icon
+            name="remove"
+            *ngIf="openEducationForm"
+            style="font-size: 45px; border: 2px dashed green;cursor: pointer;"
+          ></ion-icon>
+        </ion-avatar>
+        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated" style="padding-left: 10px;">
+          <h1>ADD EDUCATION DETAILS</h1>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <div class="container" *ngIf="openEducationForm">
+      <form
+        [formGroup]="educationDetailsForm"
+        (ngSubmit)="isEdit ? updateEducationData() : submitEducationDataForm()"
+        novalidate
+      >
+        <ion-row>
+          <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4" align-self-center>
+            <label>Education</label>
+          </ion-col>
+          <ion-col size-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8" align-self-center>
+            <ion-input type="text" formControlName="education" placeholder="Enter your company name" class="input_styl">
+            </ion-input>
+            <div class="worn_stl">
+              <span class="error ion-padding" *ngIf="isSubmitted && educationErrorControl.education.errors?.required">
+                Education is required.
+              </span>
+              <span class="error ion-padding" *ngIf="isSubmitted && educationErrorControl.education.errors?.minlength">
+                Education should be min 2 chars long.
+              </span>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4" align-self-center>
+            <label>Institution</label>
+          </ion-col>
+          <ion-col csize-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8" align-self-center>
+            <ion-input type="text" formControlName="institution" placeholder="Your institution.." class="input_styl">
+            </ion-input>
+            <div class="worn_stl">
+              <span class="error ion-padding" *ngIf="isSubmitted && educationErrorControl.institution.errors?.required">
+                Institution is required.
+              </span>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4" align-self-center>
+            <label>Major</label>
+          </ion-col>
+          <ion-col csize-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8" align-self-center>
+            <ion-input type="text" formControlName="major" placeholder="Your major.." class="input_styl"> </ion-input>
+            <div class="worn_stl">
+              <span class="error ion-padding" *ngIf="isSubmitted && educationErrorControl.major.errors?.required">
+                Major is required.
+              </span>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4" align-self-center>
+            <label>Location</label>
+          </ion-col>
+          <ion-col csize-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8" align-self-center>
+            <input type="text" formControlName="institutionLocation" class="input_styl" placeholder="Your location.." />
+            <!-- #address -->
+            <div class="worn_stl">
+              <span
+                class="error ion-padding"
+                *ngIf="isSubmitted && educationErrorControl.institutionLocation.errors?.required"
+              >
+                location is required.
+              </span>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4" align-self-center>
+            <label>When you start</label>
+          </ion-col>
+          <ion-col csize-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8" align-self-center>
+            <ion-datetime
+              (ionChange)="getDate($event.target.value, 'education')"
+              formControlName="startDate"
+              aria-placeholder="slect date"
+              class="input_styl"
+            ></ion-datetime>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4" align-self-center>
+            <label>When you passed</label>
+          </ion-col>
+          <ion-col csize-xs="12" size-sm="12" size-md="8" size-lg="8" size-xl="8" align-self-center>
+            <ion-datetime
+              (ionChange)="getEndDate($event.target.value, 'education')"
+              formControlName="passedDate"
+              aria-placeholder="slect date"
+              class="input_styl"
+            ></ion-datetime>
+          </ion-col>
+        </ion-row>
+        <ion-row style="text-align: end;">
+          <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="12">
+            <ion-button type="button" color="light" slots="end" (click)="closeFrom('education')"> cancel </ion-button>
+            <ion-button type="submit" color="primary" slots="end">
+              <span *ngIf="isEdit"> Save</span>
+              <span *ngIf="!isEdit">Submit</span>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+
+    <ion-list class="ios list-ios hydrated" *ngIf="educationDataList.length > 0">
+      <ion-list-header class="ios hydrated">
+        Education details
+      </ion-list-header>
+
+      <ion-item
+        class="item ios in-list ion-focusable item-label hydrated"
+        *ngFor="let data of educationDataList; let i = index"
+      >
+        <ion-avatar slot="start" class="ios hydrated">
+          <i class="fa fa-book" aria-hidden="true" style="font-size: 50px;"></i>
+        </ion-avatar>
+        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated" style="padding-left: 10px;">
+          <h2>{{ data.education }}</h2>
+          <p>{{ data.institution }}, {{ data.institutionLocation }}, {{ data.startDate }}- {{ data.passedDate }}</p>
+          <p style="text-align: end;">
+            <ion-button color="primary" (click)="editEducationData(data)">
+              <ion-icon ios="ios-color-filter" md="md-color-filter"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" (click)="deleteEducationData(i)">
+              <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+            </ion-button>
+            <ion-button color="light" (click)="helpWorkData()">
+              <ion-icon ios="ios-help" md="md-help"></ion-icon>
+            </ion-button>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,211 @@
+#head {
+  font-size: 45px;
+  float: right;
+}
+
+#backcard {
+  // background-image: url("https://assets.traveltriangle.com/blog/wp-content/uploads/2015/08/Tourist-Places-in-Dubai-Cover.jpg");
+  // background:url("https://assets.traveltriangle.com/blog/wp-content/uploads/2015/08/Tourist-Places-in-Dubai-Cover.jpg") no-repeat;
+  height: auto;
+  width: auto;
+  font-family: Copperplate Gothic Light;
+  // background-color: rgba(255, 0, 0, 0.2);
+  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+  // background: linear-gradient(90deg, #FDBB2D 0%, #3A1C71 100%);
+  // background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
+  // background-color: var(--sai-renta);
+}
+#titlename {
+  margin-top: -95px;
+  margin-left: 150px;
+}
+// #count{
+//   margin-top: -60px;
+//   float: right;
+//   margin-right: 130px;
+// }
+// #stars{
+//  margin-left: 30px;
+
+// }
+#star {
+  height: 20px;
+  width: 20px;
+}
+#starp {
+  margin-left: 45px;
+  // margin-top: -30px;
+}
+// #buttons{
+//   margin-left:750px;
+// }
+
+#aboutborder {
+  border-right: 1px solid lightblue;
+
+  height: auto;
+}
+#colword {
+  margin-left: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#basicinfo {
+  font-size: 20px;
+}
+#details-tab {
+  border-bottom: lightblue 1px solid;
+  margin-top: 15px;
+  font-style: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+ion-col {
+  ion-input {
+    border: solid 1px grey;
+  }
+}
+
+.dropbtn {
+  // background-color: grey;
+  // width: 50px;
+  // height: 50px;
+  // margin-top: 40px;
+
+  // padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-top: -170px;
+  // position: absolute;
+  // overflow: visible;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+#propic {
+  height: 100px;
+  width: 100px;
+  margin-left: 30px;
+  border-radius: 100%;
+}
+
+#main_card {
+  // --background: url(https://i.pinimg.com/originals/b5/aa/98/b5aa982fd593e4a089234b4a80f09f89.jpg) no-repeat top center/cover fixed, #fff;
+  position: relative;
+  height: 100%;
+  // width: 30%;
+  background-color: var(--rentastico_color);
+
+  margin: auto;
+  // height: 80%;
+  // width:40%
+}
+
+.card {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 92%;
+
+  .header {
+    height: 70px; // 20vh;
+
+    .avatar {
+      width: 160px;
+      height: 48px;
+      position: relative;
+      margin: 0 auto;
+      z-index: 100;
+
+      img {
+        width: 130px;
+        height: 130px;
+        border-radius: 100%;
+        margin: auto;
+
+        position: relative;
+        bottom: -12px; //calc(-1*(80px + 4px));
+        // border: 5px solid rgba(255,255,255,0.5);;
+        // background-color: #fff;
+      }
+    }
+  }
+}
+
+.card-body {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+
+  // background-color: white;
+  padding: 30px;
+  // margin-top: 50px;
+  // height: calc(100vh - (200px + 56px));
+  height: 360px;
+  overflow: hidden;
+  z-index: 99;
+}
+.home_owner {
+  color: white;
+  font-weight: bolder;
+  // position: absolute;
+  font-family: Copperplate Gothic Light;
+  // height: 100px;
+  // margin-left: 150px;
+  // margin-top: 60px;
+}
+
+.grid1 {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  //   background-color: #3e2723;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.cols {
+  // background-color: #80cbc4;
+  border: 0.5px solid rgba(211, 187, 187, 0.1);
+  padding: 10px;
+  //   font-size: 30px;
+  text-align: center;
+  font-family: cursive;
+  border-radius: 5px;
+  color: white;
+  font-family: monospace;
+}
+.icon1 {
+  font-size: 20px;
+  color: white;
+}

@@ -1,0 +1,333 @@
+<ion-content>
+  <!-- profile -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="12" size-sm="12" size-lg="12">
+        <ion-card size="12" size-md="12" size-lg="12" size-sm="12" id="main_card">
+          <!-- <ion-content slot="fixed" > -->
+          <div class="card">
+            <div class="header">
+              <div size="12" size-md="6" size-lg="4" size-sm="12" class="avatar">
+                <img src="{{ profile.profileImage }}" alt="" />
+              </div>
+            </div>
+
+            <div class="card-body">
+              <ion-grid class="grid1">
+                <ion-row>
+                  <!-- <ion-col></ion-col> -->
+                  <ion-col class="ion-text-center">
+                    <ion-chip color="primary">
+                      <ion-icon class="icon1" name="person"></ion-icon>
+                      <ion-label class="home_owner">{{ profile.Name }}</ion-label>
+
+                      <!-- <ion-label>Default</ion-label> -->
+                    </ion-chip>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <!-- <ion-col></ion-col> -->
+                  <ion-col class="ion-text-center">
+                    <!-- <ion-chip color="primary"> -->
+                    <ion-icon class="icon1" name="pin"></ion-icon>
+                    <ion-label class="home_owner">{{ profile.Address }}</ion-label>
+                    <!-- <ion-label>Default</ion-label> -->
+                    <!-- </ion-chip> -->
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="cols">
+                    <ion-icon id="star" name="star"></ion-icon>
+                    <ion-icon id="star" name="star"></ion-icon>
+                    <ion-icon id="star" name="star"></ion-icon>
+                    <ion-icon id="star" name="star-half"></ion-icon>
+                    <ion-icon id="star" name="star-outline"></ion-icon>
+                    <p id="starp">{{ profile.ReviewAvg }}({{ profile.ReviewCount }})</p>
+                  </ion-col>
+                  <!-- <ion-col class="cols">
+                          <ion-label>22</ion-label>
+                        </ion-col> -->
+                </ion-row>
+                <ion-row>
+                  <ion-col size-md="6" size-sm="6" size-lg="6" class="cols">
+                    <ion-icon class="icon1" name="call"></ion-icon>
+                  </ion-col>
+                  <ion-col size-md="6" size-sm="6" size-lg="6" class="cols">
+                    <ion-label>{{ profile.PhoneNumber }}</ion-label>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size-md="6" size-sm="6" size-lg="6" class="cols">
+                    <ion-icon class="icon1" name="mail"></ion-icon>
+                  </ion-col>
+                  <ion-col size-md="6" size-sm="6" size-lg="6" class="cols">
+                    <ion-label>{{ profile.email }}</ion-label>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="cols">
+                    <ion-icon name="paper"></ion-icon>
+                  </ion-col>
+                  <ion-col class="cols">
+                    <ion-label>[Spanish][English]</ion-label>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item>
+    <ion-card-title style="background-color: antiquewhite;">About</ion-card-title>
+  </ion-item>
+
+  <!-- overview workEducation properties payment -->
+
+  <ion-grid style="  border-bottom: 1px solid lightblue;">
+    <ion-row>
+      <ion-col size-md="3" size-sm="12" size-lg="3">
+        <ion-card id="aboutborder">
+          <ion-button (click)="showOverview()" [ngStyle]="overview === true && { color: 'yellow' }"
+            style="width: 250px;" id="colword">
+            <ion-icon name="eye"></ion-icon>&nbsp;&nbsp;Overview <br />
+          </ion-button>
+
+          <ion-button (click)="showWork()" [ngStyle]="work === true && { color: 'yellow' }" style="width: 250px;"
+            id="colword">
+            <ion-icon name="book"></ion-icon>&nbsp; Work and Education <br />
+          </ion-button>
+          <ion-button (click)="showProperties()" [ngStyle]="properties === true && { color: 'yellow' }"
+            style="width: 250px;" id="colword">
+            <ion-icon name="jet"></ion-icon>&nbsp; Properties <br />
+          </ion-button>
+          <ion-button (click)="showPayment()" [ngStyle]="payment === true && { color: 'yellow' }" style="width: 250px;"
+            id="colword">
+            <ion-icon name="card"></ion-icon>&nbsp;&nbsp;Payment Method
+          </ion-button>
+        </ion-card>
+      </ion-col>
+
+      <!-- work -->
+
+      <ion-col style="height:900px" size-md="9" size-sm="12" size-lg="9" size="12" *ngIf="work">
+        <app-work-education-details></app-work-education-details>
+      </ion-col>
+
+      <!-- overview -->
+      <ion-col size-md="9" size-sm="12" size-lg="9" size="12" *ngIf="overview">
+        <ion-card><br />
+          <ion-card-header>
+            <ion-row>
+              <ion-col size="11">
+                <ion-card-title>Basic Info</ion-card-title>
+              </ion-col>
+              <ion-col size="1">
+                <ion-button id="editbtn" (click)="isEditable = !isEditable">{{
+                  isEditable ? 'save' : 'edit'
+                }}</ion-button>
+              </ion-col>
+            </ion-row>
+
+            <ion-grid id="basicinfo">
+              <ion-row id="details-tab">
+                <ion-col size-md="6" size-sm="12" size-lg="6">Email</ion-col>
+                <ion-col [contentEditable]="isEditable" [ngStyle]="isEditable == true && { border: '1px black solid' }"
+                  size-md="6" size-sm="12" size-lg="6">{{ profile.email }}</ion-col>
+              </ion-row>
+              <ion-row id="details-tab">
+                <ion-col size-md="6" size-sm="12" size-lg="6">Location</ion-col>
+                <ion-col size-md="6" size-sm="12" size-lg="6" [contentEditable]="isEditable"
+                  [ngStyle]="isEditable == true && { border: '1px black solid' }">{{ profile.location }}</ion-col>
+              </ion-row>
+              <ion-row id="details-tab">
+                <ion-col size-md="6" size-sm="12" size-lg="6">Address</ion-col>
+                <ion-col [contentEditable]="isEditable" size-md="6" size-sm="12" size-lg="6"
+                  [ngStyle]="isEditable == true && { border: '1px black solid' }">{{ profile.Address }}</ion-col>
+              </ion-row>
+              <ion-row id="details-tab">
+                <ion-col size-md="6" size-sm="12" size-lg="6">Name</ion-col>
+                <ion-col [contentEditable]="isEditable" size-md="6" size-sm="12" size-lg="6"
+                  [ngStyle]="isEditable == true && { border: '1px black solid' }">{{ profile.Name }}</ion-col>
+              </ion-row>
+              <ion-row id="details-tab">
+                <ion-col size-md="6" size-sm="12" size-lg="6">Gender</ion-col>
+                <ion-col [contentEditable]="isEditable" size-md="6" size-sm="12" size-lg="6"
+                  [ngStyle]="isEditable == true && { border: '1px black solid' }">{{ profile.Gender }}</ion-col>
+              </ion-row>
+              <ion-row id="details-tab">
+                <ion-col size-md="6" size-sm="12" size-lg="6">Language</ion-col>
+                <ion-col [contentEditable]="isEditable" size-md="6" size-sm="12" size-lg="6"
+                  [ngStyle]="isEditable == true && { border: '1px black solid' }">{{ profile.Language }}</ion-col>
+              </ion-row>
+              <ion-row id="details-tab">
+                <ion-col size-md="6" size-sm="12" size-lg="6">Phone Number</ion-col>
+                <ion-col [contentEditable]="isEditable" size-md="6" size-sm="12" size-lg="6"
+                  [ngStyle]="isEditable == true && { border: '1px black solid' }">{{ profile.PhoneNumber }}</ion-col>
+              </ion-row>
+              <ion-row id="details-tab">
+                <ion-col size-md="6" size-sm="12" size-lg="6">Timezone</ion-col>
+                <ion-col [contentEditable]="isEditable" size-md="6" size-sm="12" size-lg="6"
+                  [ngStyle]="isEditable == true && { border: '1px black solid' }">{{ profile.Timezone }}</ion-col>
+              </ion-row>
+              <ion-item>
+                <ion-row>
+                  <ion-col> </ion-col>
+                </ion-row>
+                <ion-text style="font-size: 20px;">Change Password</ion-text>
+              </ion-item>
+
+              <ion-row style="margin-top: 15px;">
+                <ion-col size-md="4" size-sm="9" size-lg="6">
+                  <ion-label>Old Password </ion-label>
+                </ion-col>
+                <ion-col size-md="6" size-sm="9" size-lg="6">
+                  <ion-input type="Password" style="height: 30px;"></ion-input>
+                </ion-col>
+              </ion-row>
+              <ion-row style="margin-top: 15px;">
+                <ion-col size-md="6" size-sm="9" size-lg="6">
+                  <ion-label>New Password</ion-label>
+                </ion-col>
+                <ion-col size-md="6" size-sm="9" size-lg="6">
+                  <ion-input style="height: 30px;"></ion-input>
+                </ion-col>
+              </ion-row>
+              <ion-row style="margin-top: 15px;">
+                <ion-col size-md="6" size-sm="9" size-lg="6">
+                  <ion-label>Confirm Password</ion-label>
+                </ion-col>
+                <ion-col size-md="6" size-sm="9" size-lg="6">
+                  <ion-input type="Password" style="height: 30px;"></ion-input>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size-md="9" size-sm="12" size-lg="9">
+                  <ion-button color="tertiary"> Password Reset</ion-button>
+                </ion-col>
+              </ion-row>
+
+              
+                
+                <ion-row>
+                  <ion-col size-md="9" size-sm="9" size-lg="9" size-xs="9" size="9">
+                    <ion-text style="font-size: 20px;">AUTHENTICATION</ion-text>
+                  </ion-col>
+                  <ion-col size-md="3" size-sm="3" size-lg="3" size-xs="3" size="3">
+                    <ion-button id="editbtn" (click)="isEditableAuth = !isEditableAuth">{{
+                      isEditableAuth ? 'save' : 'edit'
+                    }}</ion-button>
+                  </ion-col>
+                </ion-row>
+    
+
+              <ion-row style="margin-top: 15px;">
+                <ion-col size-md="6" size-sm="12" size-lg="6">
+                  Government Id
+                </ion-col>
+                <ion-col size-md="6" size-sm="12" size-lg="6" [contentEditable]="isEditableAuth"
+                  [ngStyle]="isEditableAuth == true && { border: '1px black solid' }">
+                  {{ profile.GovtId }}
+                </ion-col>
+              </ion-row>
+              <ion-row style="margin-top: 15px;">
+                <ion-col size-md="6" size-sm="12" size-lg="6">
+                  Driving Licence
+                </ion-col>
+                <ion-col size-md="6" size-sm="12" size-lg="6" [contentEditable]="isEditableAuth"
+                  [ngStyle]="isEditableAuth == true && { border: '1px black solid' }">
+                  {{ profile.DrivingLic }}
+                </ion-col>
+              </ion-row>
+              <ion-row style="margin-top: 15px;">
+                <ion-col size-md="6" size-sm="12" size-lg="6">
+                  Passport
+                </ion-col>
+                <ion-col size-md="6" size-sm="12" size-lg="6" [contentEditable]="isEditableAuth"
+                  [ngStyle]="isEditableAuth == true && { border: '1px black solid' }">
+                  {{ profile.PassportNum }}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+
+      <!-- properties -->
+      <ion-col style="height:350px;" size-md="9" size-sm="12" size-lg="9" size="12" *ngIf="properties">
+        <app-properties></app-properties>
+      </ion-col>
+
+      <!-- payment -->
+      <ion-col style="height: 500px;" size-md="9" size-sm="12" size-lg="9" size="12" *ngIf="payment">
+        <app-paymentmethod></app-paymentmethod>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card style="padding: 10px;width:90%;margin-left:20px;">
+    <ion-grid id="basicinfo">
+      <ion-item>
+        <ion-text style="font-size: 20px;">Favorite</ion-text>
+      </ion-item>
+
+      <ion-row>
+        <ion-col size-md="6" size-sm="12" size-lg="1">
+          <ion-img style="height: 60px;width: 100px;"
+            src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partnerimages/37/08/370893624.jpeg">
+          </ion-img>
+        </ion-col>
+        <ion-col size-md="6" size-sm="12" size-lg="3">
+          <ion-text>Vacation Property Dhaka Dhaka, Bangladesh</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item> </ion-item>
+
+    <ion-grid id="basicinfo">
+      <ion-item>
+        <ion-text style="font-size: 20px;">Visited Places</ion-text>
+      </ion-item>
+      <ion-row>
+        <ion-col size-md="6" size-sm="12" size-lg="1">
+          <ion-img style="height: 60px;width: 100px;"
+            src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partnerimages/35/37/353723574.jpeg">
+          </ion-img>
+        </ion-col>
+        <ion-col size-md="6" size-sm="12" size-lg="3">
+          <ion-text>Vacation Property Dhaka Dhaka, Bangladesh</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" size-sm="12" size-lg="1">
+          <ion-img style="height: 60px;width: 100px;"
+            src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partnerimages/11/67/116739568.jpeg">
+          </ion-img>
+        </ion-col>
+        <ion-col size-md="6" size-sm="12" size-lg="3">
+          <ion-text>Vacation Property Mumbai Mumbai, India</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" size-sm="12" size-lg="1">
+          <ion-img style="height: 60px;width: 100px;"
+            src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partnerimages/26/33/263381684.jpeg">
+          </ion-img>
+        </ion-col>
+        <ion-col size-md="6" size-sm="12" size-lg="3">
+          <ion-text>Taj Banjara Hyderabad, India</ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-text style="font-size: 20px;">Follows</ion-text>
+      </ion-item>
+
+      <ion-item> </ion-item>
+    </ion-grid>
+  </ion-card>
+</ion-content>

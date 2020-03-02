@@ -1,0 +1,22 @@
+<ion-content>
+  <ion-text class="text" style="border-bottom: 1px solid gray;font-size: 20px;font-weight: bold;">PROPERTIES</ion-text>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let proper of property" size="12" size-md="6">
+        <ion-card>
+          <img src="{{ proper.img }}" />
+          <ion-card-header>
+            <ion-card-title>{{ proper.title }} </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{ proper.subtitle }}
+          </ion-card-content>
+        </ion-card>
+        <!-- <img src="{{ proper.img }}" alt="Property Image">
+            <ion-text>{{ proper.title }}</ion-text><br>
+            <ion-text>{{ proper.subtitle }}</ion-text> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,31 @@
+
+ion-content {
+    --background: #58666e;
+   }
+
+
+.inputLineHeight{
+    line-height: 50px;
+}   
+
+@media only screen and (min-width: 963px) {
+    .FormBody{
+        margin: 5% 25% 0 25% ;
+        background-color:white;
+        width: 50%;
+    }
+    .selectWidth{
+        min-width: 325px;padding: 10px;
+    }
+  }
+
+@media only screen and (max-width: 963px) {
+    .FormBody{
+        margin: 1% 2% 0 2% ;
+        background-color:white;
+        width: 96%;
+    }  
+    .selectWidth{
+        min-width: 100px;padding: 5px;
+    }
+  } 

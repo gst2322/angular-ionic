@@ -1,0 +1,75 @@
+<ion-content>
+  <ion-card class="cardP2">
+    <ion-button (click)="isPaymentMethod=true;isPayout=false;isTransHis=false" [ngStyle]="isPaymentMethod === true && { color: 'yellow' }"  >Payment method</ion-button>
+    <ion-button (click)="isPaymentMethod=false;isPayout=false;isTransHis=true" [ngStyle]="isTransHis=== true && { color: 'yellow' }" >Transactions History </ion-button>
+    <ion-button (click)="isPaymentMethod=false;isPayout=true;isTransHis=false" [ngStyle]="isPayout=== true && { color: 'yellow' }" >Payout </ion-button>
+  </ion-card>
+  <div *ngIf="isPaymentMethod">
+    <ion-card>
+
+      <ion-card-content class="content" style="border-bottom: 1px solid gray;"> Payment Method</ion-card-content>
+
+      <ion-text class="text"><b>Payment Methods</b></ion-text>
+
+
+      <div class="table">
+        <ion-grid>
+          <ion-row class="row1" style="border-bottom: 1px solid gray;">
+            <ion-col>
+              <ion-text><b>Name</b></ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text><b>Card No</b> </ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text><b>Card Type</b> </ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text><b>Country</b></ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text><b>Expires</b></ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text><b>Action</b></ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row id="row2">
+            <ion-col>
+              <ion-text>Ruby</ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text>3234 4345 6754</ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text>American Express</ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text style="color: green;">Mexico</ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text><B>May 2023</B></ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-icon name="close"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-card>
+
+    <ion-text class="text2">Payment Methods</ion-text>
+
+    <ion-card class="crad2">
+      <ion-button color="secondary">Add Payment Method</ion-button>
+    </ion-card>
+
+  </div>
+  <div *ngIf="isTransHis">
+    <app-transaction-history></app-transaction-history>
+    
+  </div>
+  <div *ngIf="isPayout">
+    <app-payout></app-payout>
+  </div>
+</ion-content>
